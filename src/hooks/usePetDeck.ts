@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { getPets } from '../services/petService'
 import { useMatchStore } from '../stores/matchStore'
 import type { Pet } from '../types/pet'
@@ -11,22 +11,21 @@ export function usePetDeck() {
   const passed = useMatchStore((state) => state.passed)
   const likePet = useMatchStore((state) => state.like)
   const passPet = useMatchStore((state) => state.pass)
+  const hasLoadedRef = useRef(false)
 
+  // One-time load. The ref guard stops StrictMode's double effect run from fetching twice.
   useEffect(() => {
-    let cancelled = false
+    if (hasLoadedRef.current) return
+    hasLoadedRef.current = true
+
     getPets()
-      .then((data) => {
-        if (!cancelled) setPets(data)
-      })
+      .then(setPets)
       .catch((err: unknown) => {
-        if (!cancelled) setError(err instanceof Error ? err : new Error(String(err)))
+        setError(err instanceof Error ? err : new Error(String(err)))
       })
       .finally(() => {
-        if (!cancelled) setIsLoading(false)
+        setIsLoading(false)
       })
-    return () => {
-      cancelled = true
-    }
   }, [])
 
   // Derived from the store rather than kept as an index, so the deck resumes where it left off.

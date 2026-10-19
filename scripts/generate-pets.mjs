@@ -20,7 +20,7 @@ const profiles = [
     'Tengo mis primeras vacunas y muchas ganas de aprender.',
   ]],
   ['Rocky', 'pitbull', [
-    'Soy un pitbull de 3 años: mi apariencia es fuerte, pero soy un gran apapachador.',
+    'Soy un pitbull de 3 años: mi apariencia es fuerte, pero soy muy cariñoso.',
     'Prefiero ser el único perro de la casa y adoro dormir junto a mis humanos.',
     'Estoy esterilizado, sano y listo para demostrar lo noble que soy.',
   ]],
@@ -36,7 +36,7 @@ const profiles = [
   ]],
   ['Mía', 'chihuahua', [
     'Soy una chihuahua de 3 años, pequeña pero muy valiente.',
-    'Soy perfecta para departamento y me encanta estar en tus piernas.',
+    'Soy perfecta para apartamento y me encanta estar en tus piernas.',
     'Me rescataron de la calle y hoy sueño con una familia que me cuide.',
   ]],
   ['Bruno', 'german/shepherd', [
@@ -71,7 +71,7 @@ const profiles = [
   ]],
   ['Lola', 'dachshund', [
     'Soy una salchicha de 4 años, simpática y algo testaruda.',
-    'Me adapto bien a un departamento, pero necesito evitar las escaleras.',
+    'Me adapto bien a un apartamento, pero necesito evitar las escaleras.',
     'Estoy vacunada y desparasitada; prometo llenar tu casa de alegría.',
   ]],
   ['Zeus', 'dane/great', [
@@ -126,7 +126,7 @@ const profiles = [
   ]],
   ['Princesa', 'shihtzu', [
     'Soy una shih tzu de 6 años, coqueta y muy tranquila.',
-    'Soy perfecta para departamento y para familias con poco tiempo libre.',
+    'Soy perfecta para apartamento y para familias con poco tiempo libre.',
     'Estoy vacunada, esterilizada y lista para que me consientas.',
   ]],
   ['Bobby', 'schnauzer/miniature', [
@@ -166,7 +166,7 @@ const profiles = [
   ]],
   ['Chloe', 'pomeranian', [
     'Soy una pomerania de 2 años, pequeña, esponjosa y muy vivaz.',
-    'Soy ideal para departamento y me encanta que me lleven a todos lados.',
+    'Soy ideal para apartamento y me encanta que me lleven a todos lados.',
     'Estoy vacunada y esterilizada, lista para mi nuevo hogar.',
   ]],
   ['Bongo', 'greyhound', [
@@ -195,8 +195,8 @@ const profiles = [
     'Estoy esterilizado; cuando confío en alguien, es para siempre.',
   ]],
   ['Pepa', 'bulldog/french', [
-    'Soy una bulldog francés de 3 años, divertida y muy apapachadora.',
-    'Me adapto bien a departamento y no necesito paseos largos.',
+    'Soy una bulldog francés de 3 años, divertida y muy cariñosa.',
+    'Me adapto bien a un apartamento y no necesito paseos largos.',
     'Estoy vacunada y esterilizada; adóptame y no te arrepentirás.',
   ]],
   ['Hachi', 'shiba', [

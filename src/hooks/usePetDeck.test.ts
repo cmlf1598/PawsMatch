@@ -1,3 +1,4 @@
+import { StrictMode } from 'react'
 import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { act, renderHook, waitFor } from '@testing-library/react'
 import { usePetDeck } from './usePetDeck'
@@ -17,6 +18,16 @@ describe('usePetDeck', () => {
     await waitFor(() => expect(result.current.isLoading).toBe(false))
     expect(result.current.currentPet?.id).toBe(1)
     expect(result.current.remainingCount).toBe(50)
+  })
+
+  it('loads the pets only once under StrictMode', async () => {
+    const getPets = vi.spyOn(petService, 'getPets')
+
+    const { result } = renderHook(() => usePetDeck(), { wrapper: StrictMode })
+    await waitFor(() => expect(result.current.isLoading).toBe(false))
+
+    expect(getPets).toHaveBeenCalledOnce()
+    expect(result.current.currentPet?.id).toBe(1)
   })
 
   it('records a like or pass and moves to the next pet', async () => {

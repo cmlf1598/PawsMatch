@@ -12,6 +12,8 @@
     "generate:pets": "node scripts/generate-pets.mjs"
   },
   "dependencies": {
+    "framer-motion": "^14.4.0",
+    "lucide-react": "^1.59.0",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "zustand": "^5.0.15"

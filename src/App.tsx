@@ -1,40 +1,33 @@
-import { PetCard } from './components/PetCard'
-import { usePetDeck } from './hooks/usePetDeck'
-import { useMatchStore } from './stores/matchStore'
+import { useState } from 'react'
+import { AnimatePresence, MotionConfig } from 'framer-motion'
+import { AdoptionDetails } from './components/AdoptionDetails'
+import { AppBackground } from './components/AppBackground'
+import { DeckScreen } from './components/DeckScreen'
+import type { Pet } from './types/pet'
 
 export default function App() {
-  const likedCount = useMatchStore((state) => state.liked.length)
-  const passedCount = useMatchStore((state) => state.passed.length)
-  const { currentPet, remainingCount, isLoading, error, like, pass } = usePetDeck()
+  const [adoptingPet, setAdoptingPet] = useState<Pet | null>(null)
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center gap-4 bg-amber-50 p-6">
-      <header className="text-center">
-        <h1 className="text-4xl font-bold text-amber-900">PawsMatch</h1>
-        <p className="text-amber-800">Find your new best friend.</p>
-        <p className="text-sm text-amber-700">
-          Liked: {likedCount} · Passed: {passedCount}
-        </p>
-      </header>
+    <MotionConfig reducedMotion="user">
+      <div className="relative h-dvh overflow-hidden bg-stone-950 text-white">
+        <AppBackground />
 
-      {isLoading && <p className="text-amber-700">Loading pets...</p>}
-
-      {error && (
-        <p className="text-rose-600" role="alert">
-          Failed to load pets: {error.message}
-        </p>
-      )}
-
-      {!isLoading && !error && currentPet && (
-        <div className="flex flex-col items-center gap-2">
-          <PetCard pet={currentPet} onLike={like} onPass={pass} />
-          <p className="text-xs text-amber-700">Remaining profiles: {remainingCount}</p>
+        {/* The deck stays mounted under the adoption screen so its pre-fetched stack survives. */}
+        <div className="relative h-full" inert={adoptingPet !== null}>
+          <DeckScreen onAdopt={setAdoptingPet} />
         </div>
-      )}
 
-      {!isLoading && !error && !currentPet && (
-        <p className="text-amber-800">No more pets in the deck. Check back later!</p>
-      )}
-    </main>
+        <AnimatePresence>
+          {adoptingPet && (
+            <AdoptionDetails
+              key={adoptingPet.id}
+              pet={adoptingPet}
+              onKeepBrowsing={() => setAdoptingPet(null)}
+            />
+          )}
+        </AnimatePresence>
+      </div>
+    </MotionConfig>
   )
 }
