@@ -1,9 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react'
-import {
-  getPetWithLiveImage,
-  fetchRandomDogImage,
-  preloadImage,
-} from '../services/petProvider'
+import { getPetWithLiveImage } from '../services/petProvider'
 import { useMatchStore } from '../stores/matchStore'
 import { mockPets } from '../data/mockData'
 import type { Pet } from '../types/pet'
@@ -18,7 +14,6 @@ export const BUFFER_SIZE = 3
 export function useLivePet(initialPetId?: number) {
   const [stack, setStack] = useState<Pet[]>([])
   const [isLoading, setIsLoading] = useState(true)
-  const [isRefreshing, setIsRefreshing] = useState(false)
   const [error, setError] = useState<Error | null>(null)
   const [reloadKey, setReloadKey] = useState(0)
 
@@ -119,22 +114,6 @@ export function useLivePet(initialPetId?: number) {
       })
   }, [stack, isLoading, liked, passed])
 
-  const refreshPhoto = useCallback(async () => {
-    if (stack.length === 0) return
-    setIsRefreshing(true)
-    try {
-      const liveImageUrl = await fetchRandomDogImage()
-      await preloadImage(liveImageUrl)
-      setStack((prev) =>
-        prev.map((p, i) => (i === 0 ? { ...p, image: liveImageUrl } : p)),
-      )
-    } catch (err: unknown) {
-      console.warn('Could not refresh photo from Dog API:', err)
-    } finally {
-      setIsRefreshing(false)
-    }
-  }, [stack.length])
-
   const like = useCallback(() => {
     if (stack.length === 0) return
     const current = stack[0]
@@ -167,11 +146,9 @@ export function useLivePet(initialPetId?: number) {
     bufferedCount: stack.length,
     remainingCount: totalRemaining,
     isLoading,
-    isRefreshing,
     error,
     like,
     pass,
-    refreshPhoto,
     reload,
   }
 }

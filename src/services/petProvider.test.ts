@@ -1,45 +1,48 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import {
-  fetchRandomDogImage,
+  fetchBreedImage,
+  getBreedImageUrl,
   getPetWithLiveImage,
   getPetsWithLiveImages,
   mergePetWithImage,
   preloadImage,
-  DOG_API_RANDOM_URL,
 } from './petProvider'
+import { clearImageCache, getCachedImage, PET_IMAGE_STORAGE_KEY, setCachedImage } from './petImageCache'
+import { mockPets } from '../data/mockData'
 import type { Pet } from '../types/pet'
+
+function dogApiResponse(message: string) {
+  return { ok: true, status: 200, json: async () => ({ message, status: 'success' }) }
+}
+
+/** A fetch mock that answers with the given image URLs in order. */
+function fetchReturning(...imageUrls: string[]) {
+  const customFetch = vi.fn()
+  for (const url of imageUrls) customFetch.mockResolvedValueOnce(dogApiResponse(url))
+  return customFetch
+}
 
 describe('petProvider', () => {
   beforeEach(() => {
     vi.restoreAllMocks()
+    clearImageCache()
   })
 
-  describe('fetchRandomDogImage', () => {
-    it('fetches from The Dog API and returns the image URL from $.message', async () => {
-      const mockResponse = {
-        message: 'https://images.dog.ceo/breeds/husky/n02110185_1469.jpg',
-        status: 'success',
-      }
-      const customFetch = vi.fn().mockResolvedValue({
-        ok: true,
-        status: 200,
-        json: async () => mockResponse,
-      })
+  describe('fetchBreedImage', () => {
+    it('fetches a random image of the breed and returns the URL from $.message', async () => {
+      const customFetch = fetchReturning('https://images.dog.ceo/breeds/retriever-golden/a.jpg')
 
-      const imageUrl = await fetchRandomDogImage(customFetch as unknown as typeof fetch)
+      const imageUrl = await fetchBreedImage('retriever/golden', customFetch as unknown as typeof fetch)
 
-      expect(customFetch).toHaveBeenCalledWith(DOG_API_RANDOM_URL)
-      expect(imageUrl).toBe('https://images.dog.ceo/breeds/husky/n02110185_1469.jpg')
+      expect(customFetch).toHaveBeenCalledWith('https://dog.ceo/api/breed/retriever/golden/images/random')
+      expect(imageUrl).toBe('https://images.dog.ceo/breeds/retriever-golden/a.jpg')
     })
 
     it('throws when the HTTP response is not ok', async () => {
-      const customFetch = vi.fn().mockResolvedValue({
-        ok: false,
-        status: 500,
-      })
+      const customFetch = vi.fn().mockResolvedValue({ ok: false, status: 500 })
 
       await expect(
-        fetchRandomDogImage(customFetch as unknown as typeof fetch),
+        fetchBreedImage('husky', customFetch as unknown as typeof fetch),
       ).rejects.toThrow('The Dog API responded with HTTP status 500')
     })
 
@@ -51,8 +54,15 @@ describe('petProvider', () => {
       })
 
       await expect(
-        fetchRandomDogImage(customFetch as unknown as typeof fetch),
+        fetchBreedImage('unknown', customFetch as unknown as typeof fetch),
       ).rejects.toThrow('The Dog API returned an unsuccessful response')
+    })
+  })
+
+  describe('getBreedImageUrl', () => {
+    it('supports sub-breed paths', () => {
+      expect(getBreedImageUrl('labrador')).toBe('https://dog.ceo/api/breed/labrador/images/random')
+      expect(getBreedImageUrl('bulldog/french')).toBe('https://dog.ceo/api/breed/bulldog/french/images/random')
     })
   })
 
@@ -61,68 +71,91 @@ describe('petProvider', () => {
       const basePet: Pet = {
         id: 1,
         name: 'Luna',
+        breed: 'mix',
         bio: ['Line 1', 'Line 2', 'Line 3'],
         image: 'https://local-image.jpg',
       }
       const newUrl = 'https://images.dog.ceo/breeds/retriever/dog.jpg'
 
-      const merged = mergePetWithImage(basePet, newUrl)
-
-      expect(merged).toEqual({
-        id: 1,
-        name: 'Luna',
-        bio: ['Line 1', 'Line 2', 'Line 3'],
-        image: newUrl,
-      })
+      expect(mergePetWithImage(basePet, newUrl)).toEqual({ ...basePet, image: newUrl })
     })
   })
 
   describe('getPetWithLiveImage', () => {
-    it('returns the pet with the live API image when the request succeeds', async () => {
-      const customFetch = vi.fn().mockResolvedValue({
-        ok: true,
-        status: 200,
-        json: async () => ({
-          message: 'https://images.dog.ceo/breeds/labrador/live.jpg',
-          status: 'success',
-        }),
-      })
+    it("fetches a live image of the pet's own breed", async () => {
+      const max = mockPets.find((pet) => pet.name === 'Max')!
+      const customFetch = fetchReturning('https://images.dog.ceo/breeds/labrador/live.jpg')
 
-      const pet = await getPetWithLiveImage(1, customFetch as unknown as typeof fetch)
+      const pet = await getPetWithLiveImage(max.id, customFetch as unknown as typeof fetch)
 
-      expect(pet.id).toBe(1)
-      expect(pet.name).toBe('Luna')
+      expect(customFetch).toHaveBeenCalledWith(getBreedImageUrl('labrador'))
+      expect(pet.name).toBe('Max')
       expect(pet.image).toBe('https://images.dog.ceo/breeds/labrador/live.jpg')
     })
 
-    it('gracefully falls back to the local image if the API call fails', async () => {
+    it('keeps the same photo on later loads instead of fetching a new one', async () => {
+      const customFetch = fetchReturning(
+        'https://images.dog.ceo/breeds/mix/first.jpg',
+        'https://images.dog.ceo/breeds/mix/second.jpg',
+      )
+
+      const first = await getPetWithLiveImage(1, customFetch as unknown as typeof fetch)
+      const second = await getPetWithLiveImage(1, customFetch as unknown as typeof fetch)
+
+      expect(customFetch).toHaveBeenCalledOnce()
+      expect(second.image).toBe(first.image)
+    })
+
+    it('remembers the photo in localStorage so it survives a page reload', async () => {
+      const customFetch = fetchReturning('https://images.dog.ceo/breeds/mix/stored.jpg')
+
+      await getPetWithLiveImage(1, customFetch as unknown as typeof fetch)
+
+      expect(JSON.parse(localStorage.getItem(PET_IMAGE_STORAGE_KEY)!)).toEqual({
+        1: 'https://images.dog.ceo/breeds/mix/stored.jpg',
+      })
+    })
+
+    it('fetches again when the photo is already used by another pet', async () => {
+      setCachedImage(9, 'https://images.dog.ceo/breeds/mix/taken.jpg')
+      const customFetch = fetchReturning(
+        'https://images.dog.ceo/breeds/mix/taken.jpg',
+        'https://images.dog.ceo/breeds/mix/free.jpg',
+      )
+
+      const pet = await getPetWithLiveImage(1, customFetch as unknown as typeof fetch)
+
+      expect(customFetch).toHaveBeenCalledTimes(2)
+      expect(pet.image).toBe('https://images.dog.ceo/breeds/mix/free.jpg')
+    })
+
+    it('falls back to the local image if the API call fails, without remembering it', async () => {
       const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
       const customFetch = vi.fn().mockRejectedValue(new Error('Network error'))
 
       const pet = await getPetWithLiveImage(1, customFetch as unknown as typeof fetch)
 
-      expect(pet.id).toBe(1)
       expect(pet.name).toBe('Luna')
-      expect(pet.image).toMatch(/^https:\/\/images\.dog\.ceo\//)
+      expect(pet.image).toBe(mockPets[0].image)
       expect(warnSpy).toHaveBeenCalled()
+      expect(getCachedImage(1)).toBeUndefined()
     })
   })
 
   describe('getPetsWithLiveImages', () => {
-    it('loads all pets and replaces images with live responses', async () => {
-      const customFetch = vi.fn().mockResolvedValue({
-        ok: true,
-        status: 200,
-        json: async () => ({
-          message: 'https://images.dog.ceo/breeds/mix/live.jpg',
-          status: 'success',
-        }),
-      })
+    it('loads all pets with a live image of each breed', async () => {
+      let counter = 0
+      const customFetch = vi.fn().mockImplementation(async () =>
+        dogApiResponse(`https://images.dog.ceo/breeds/live-${++counter}.jpg`),
+      )
 
       const pets = await getPetsWithLiveImages(customFetch as unknown as typeof fetch)
 
       expect(pets).toHaveLength(50)
-      expect(pets[0].image).toBe('https://images.dog.ceo/breeds/mix/live.jpg')
+      expect(new Set(pets.map((pet) => pet.image)).size).toBe(50)
+      for (const pet of mockPets) {
+        expect(customFetch).toHaveBeenCalledWith(getBreedImageUrl(pet.breed))
+      }
     })
   })
 
@@ -132,4 +165,3 @@ describe('petProvider', () => {
     })
   })
 })
-

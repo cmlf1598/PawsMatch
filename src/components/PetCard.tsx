@@ -1,14 +1,12 @@
 import { useState } from 'react'
 import { animate, motion, useMotionValue, useTransform, type PanInfo } from 'framer-motion'
-import { Heart, RefreshCw, X } from 'lucide-react'
+import { Heart, X } from 'lucide-react'
 import type { Pet } from '../types/pet'
 
 export interface PetCardProps {
   pet: Pet
   onLike?: () => void
   onPass?: () => void
-  onRefreshPhoto?: () => void
-  isRefreshingPhoto?: boolean
 }
 
 export const FALLBACK_IMAGE = 'https://images.dog.ceo/breeds/mix/dog1.jpg'
@@ -19,13 +17,7 @@ const FLY_OUT_DISTANCE = 640
 
 type Decision = 'like' | 'pass'
 
-export function PetCard({
-  pet,
-  onLike,
-  onPass,
-  onRefreshPhoto,
-  isRefreshingPhoto = false,
-}: PetCardProps) {
+export function PetCard({ pet, onLike, onPass }: PetCardProps) {
   const [failedImage, setFailedImage] = useState<string | null>(null)
   const [isLeaving, setIsLeaving] = useState(false)
   const x = useMotionValue(0)
@@ -73,9 +65,7 @@ export function PetCard({
         onError={() => {
           setFailedImage(pet.image)
         }}
-        className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-300 ${
-          isRefreshingPhoto ? 'opacity-40' : 'opacity-100'
-        }`}
+        className="absolute inset-0 h-full w-full object-cover"
       />
       <div
         aria-hidden="true"
@@ -99,18 +89,6 @@ export function PetCard({
             Pasar
           </motion.div>
         </>
-      )}
-
-      {onRefreshPhoto && (
-        <button
-          type="button"
-          onClick={onRefreshPhoto}
-          disabled={isRefreshingPhoto}
-          aria-label="Ver otra foto"
-          className="absolute top-4 right-4 flex size-11 items-center justify-center rounded-full border border-white/30 bg-white/15 text-white backdrop-blur-md transition hover:bg-white/25 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white disabled:opacity-60"
-        >
-          <RefreshCw aria-hidden="true" className={`size-5 ${isRefreshingPhoto ? 'animate-spin' : ''}`} />
-        </button>
       )}
 
       <div className="absolute inset-x-3 bottom-3 rounded-3xl border border-white/20 bg-white/10 p-5 text-white shadow-lg backdrop-blur-xl">

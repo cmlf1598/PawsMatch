@@ -22,11 +22,9 @@ export function DeckScreen({ onAdopt }: DeckScreenProps) {
     pet,
     remainingCount,
     isLoading,
-    isRefreshing,
     error,
     like,
     pass,
-    refreshPhoto,
     reload,
   } = useLivePet()
 
@@ -104,13 +102,7 @@ export function DeckScreen({ onAdopt }: DeckScreenProps) {
                   inert={!isTop}
                 >
                   {isTop ? (
-                    <PetCard
-                      pet={stackPet}
-                      onLike={handleLike}
-                      onPass={pass}
-                      onRefreshPhoto={refreshPhoto}
-                      isRefreshingPhoto={isRefreshing}
-                    />
+                    <PetCard pet={stackPet} onLike={handleLike} onPass={pass} />
                   ) : (
                     <PetCard pet={stackPet} />
                   )}

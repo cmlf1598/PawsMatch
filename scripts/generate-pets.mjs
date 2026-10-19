@@ -275,7 +275,7 @@ async function fetchUniqueImage(breed) {
 
 const pets = []
 for (const [index, [name, breed, bio]] of profiles.entries()) {
-  pets.push({ id: index + 1, name, bio, image: await fetchUniqueImage(breed) })
+  pets.push({ id: index + 1, name, breed, bio, image: await fetchUniqueImage(breed) })
 }
 
 writeFileSync(outputPath, JSON.stringify(pets, null, 2) + '\n')

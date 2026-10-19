@@ -1,7 +1,11 @@
 import { mockPets } from '../data/mockData'
+import { getCachedImage, isImageUsedByAnotherPet, setCachedImage } from './petImageCache'
 import type { Pet } from '../types/pet'
 
-export const DOG_API_RANDOM_URL = 'https://dog.ceo/api/breeds/image/random'
+export const DOG_API_BASE_URL = 'https://dog.ceo/api'
+
+/** Retries when a new photo is already shown for another pet (e.g. two 'mix' dogs). */
+const MAX_UNIQUE_IMAGE_ATTEMPTS = 3
 
 export interface DogApiResponse {
   message: string
@@ -9,12 +13,17 @@ export interface DogApiResponse {
   code?: number
 }
 
+/** e.g. 'retriever/golden' → 'https://dog.ceo/api/breed/retriever/golden/images/random' */
+export function getBreedImageUrl(breed: string): string {
+  return `${DOG_API_BASE_URL}/breed/${breed}/images/random`
+}
+
 /**
- * Fetches a random dog image URL from The Dog API (dog.ceo).
+ * Fetches a random image of the given breed from The Dog API (dog.ceo).
  * The image URL is located at the JSON path `$.message`.
  */
-export async function fetchRandomDogImage(fetchFn = fetch): Promise<string> {
-  const response = await fetchFn(DOG_API_RANDOM_URL)
+export async function fetchBreedImage(breed: string, fetchFn = fetch): Promise<string> {
+  const response = await fetchFn(getBreedImageUrl(breed))
   if (!response.ok) {
     throw new Error(`The Dog API responded with HTTP status ${response.status}`)
   }
@@ -70,11 +79,35 @@ export function mergePetWithImage(localPet: Pet, imageUrl: string): Pet {
 }
 
 /**
- * Loads a pet profile from local pets.json and merges it with a live random
- * dog image from The Dog API.
+ * Returns the pet's remembered live photo, or fetches a new photo of its breed and
+ * remembers it, so each dog is fetched once and keeps the same photo afterwards.
+ * Throws if the API call fails, so callers can fall back to the bundled image.
+ */
+async function getStableLiveImage(pet: Pet, fetchFn: typeof fetch): Promise<string> {
+  const cachedImage = getCachedImage(pet.id)
+  if (cachedImage) return cachedImage
+
+  let imageUrl = await fetchBreedImage(pet.breed, fetchFn)
+  for (
+    let attempt = 1;
+    attempt < MAX_UNIQUE_IMAGE_ATTEMPTS && isImageUsedByAnotherPet(imageUrl, pet.id);
+    attempt++
+  ) {
+    imageUrl = await fetchBreedImage(pet.breed, fetchFn)
+  }
+
+  setCachedImage(pet.id, imageUrl)
+  return imageUrl
+}
+
+/**
+ * Loads a pet profile from local pets.json and merges it with a live image of
+ * the pet's breed from The Dog API. The image is fetched once per pet and
+ * remembered (see petImageCache), so the dog looks the same every time.
  *
  * If the API request fails (e.g., offline or network error), it gracefully
  * falls back to the bundled image URL from pets.json so the UI never breaks.
+ * The fallback isn't remembered, so a later load can still pick a live photo.
  */
 export async function getPetWithLiveImage(
   petId: number = 1,
@@ -86,7 +119,7 @@ export async function getPetWithLiveImage(
   }
 
   try {
-    const liveImageUrl = await fetchRandomDogImage(fetchFn)
+    const liveImageUrl = await getStableLiveImage(localPet, fetchFn)
     const pet = mergePetWithImage(localPet, liveImageUrl)
     await preloadImage(pet.image)
     return pet
@@ -100,14 +133,14 @@ export async function getPetWithLiveImage(
 }
 
 /**
- * Returns all local pet profiles, attempting to supply fresh live images
- * while falling back safely to bundled images for any failures.
+ * Returns all local pet profiles with their live breed images (fetched once per
+ * pet and remembered), falling back safely to bundled images for any failures.
  */
 export async function getPetsWithLiveImages(fetchFn = fetch): Promise<Pet[]> {
   return Promise.all(
     mockPets.map(async (pet) => {
       try {
-        const liveImageUrl = await fetchRandomDogImage(fetchFn)
+        const liveImageUrl = await getStableLiveImage(pet, fetchFn)
         return mergePetWithImage(pet, liveImageUrl)
       } catch {
         return { ...pet }

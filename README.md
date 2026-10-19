@@ -31,14 +31,15 @@ src/
 ├── components/                # UI components
 │   ├── AppBackground.tsx      # Blurred warm light blobs behind the glass surfaces
 │   ├── DeckScreen.tsx         # Main screen: header, swipeable card stack, loading/error/empty states
-│   ├── PetCard.tsx            # Glassmorphism pet card: photo, bio, swipe gestures, Adoptar/Pasar actions, photo refresh
+│   ├── PetCard.tsx            # Glassmorphism pet card: photo, bio, swipe gestures, Adoptar/Pasar actions
 │   ├── AdoptionDetails.tsx    # Adoption screen: shelter, location, contact, visiting hours, Agendar visita / Seguir explorando
 │   └── ScheduleVisitSheet.tsx # Bottom sheet to pick a visit day and time
 ├── hooks/                     # Custom hooks
-│   ├── useLivePet.ts          # useLivePet(): pre-fetch stack with live Dog API images, photo refresh, like/pass, reload
+│   ├── useLivePet.ts          # useLivePet(): pre-fetch stack with live Dog API images, like/pass, reload
 │   └── usePetDeck.ts          # usePetDeck(): simpler deck over getPets() (not used by the UI)
 ├── services/                  # API and data access
-│   ├── petProvider.ts         # The Dog API integration: fetches live dog images and merges them with local profiles
+│   ├── petProvider.ts         # The Dog API integration: fetches a live image of each pet's breed and merges it with the local profile
+│   ├── petImageCache.ts       # Remembers each pet's live photo (localStorage) so it never changes
 │   ├── petService.ts          # getPets(): loads the pet profiles
 │   └── shelterService.ts      # Shelter for each pet, Google Maps link, available visit slots
 ├── types/                     # TypeScript definitions
@@ -46,7 +47,7 @@ src/
 │   └── shelter.ts             # Shelter, VisitingHours, VisitDay and ScheduledVisit
 ├── data/                      # Local data
 │   ├── mockData.ts            # Typed pet profiles (exports mockPets)
-│   ├── pets.json              # 50 dog profiles: id, name, 3-line adoption bio (Spanish) and Dog CEO image URL
+│   ├── pets.json              # 50 dog profiles: id, name, Dog CEO breed, 3-line adoption bio (Spanish) and fallback image URL
 │   └── shelters.ts            # Fictional Guatemalan shelters (see "Data sources")
 ├── utils/
 │   └── format.ts              # es-GT date and time formatting (Intl.DateTimeFormat)
@@ -125,10 +126,11 @@ All motion uses Framer Motion:
 
 ## Data sources & The Dog API integration
 
-1. **Local profiles as Source of Truth**: [`src/data/pets.json`](src/data/pets.json) defines each dog's `id`, `name`, and 3-line Spanish `bio`.
-2. **Live Image Provider**: [`src/services/petProvider.ts`](src/services/petProvider.ts) calls [The Dog API](https://dog.ceo/dog-api/) (`https://dog.ceo/api/breeds/image/random`), extracting the image URL at `$.message` and merging it into the [`Pet`](src/types/pet.ts) contract. Because the endpoint returns any breed, the live photo may not match the breed named in the bio.
-3. **Resilient Fallback**: If the network or Dog API is unavailable, `petProvider` automatically falls back to the bundled image in `pets.json`, ensuring the UI never displays broken content.
-4. **Shelters**: [`src/data/shelters.ts`](src/data/shelters.ts) holds four **fictional** shelters in Guatemala City, Antigua Guatemala, Quetzaltenango and Mixco. Phone numbers use the unassigned `+502 0` prefix and emails use the reserved `.example` domain, so they can't reach anyone real. `getShelterForPet()` assigns each pet a shelter by id. Scheduled visits are kept only in the adoption screen's state; nothing is sent anywhere.
+1. **Local profiles as Source of Truth**: [`src/data/pets.json`](src/data/pets.json) defines each dog's `id`, `name`, `breed` (a Dog CEO breed path such as `labrador`, `retriever/golden` or `mix`) and 3-line Spanish `bio`.
+2. **Live Image Provider**: [`src/services/petProvider.ts`](src/services/petProvider.ts) calls [The Dog API](https://dog.ceo/dog-api/) for the pet's own breed (`https://dog.ceo/api/breed/{breed}/images/random`), extracting the image URL at `$.message` and merging it into the [`Pet`](src/types/pet.ts) contract, so the photo always matches the breed in the bio.
+3. **One dog, one photo**: each pet's live image is fetched **once** and remembered by [`src/services/petImageCache.ts`](src/services/petImageCache.ts) in `localStorage` (key `pawsmatch:pet-images`). Later loads, reloads and visits reuse it, so a dog never changes appearance. There is intentionally no "new photo" button: the API returns photos of *different* dogs of the breed, which would make the profile look like another animal. If a new photo is already shown for another pet (several dogs share the `mix` breed), the provider fetches again, up to 3 attempts. If storage is unavailable (private mode), photos still stay stable for the session. To get new photos, clear the site data or remove that key.
+4. **Resilient Fallback**: If the network or Dog API is unavailable, `petProvider` automatically falls back to the bundled image in `pets.json` (picked for the same breed), ensuring the UI never displays broken content. The fallback isn't remembered, so a later visit can still pick a live photo.
+5. **Shelters**: [`src/data/shelters.ts`](src/data/shelters.ts) holds four **fictional** shelters in Guatemala City, Antigua Guatemala, Quetzaltenango and Mixco. Phone numbers use the unassigned `+502 0` prefix and emails use the reserved `.example` domain, so they can't reach anyone real. `getShelterForPet()` assigns each pet a shelter by id. Scheduled visits are kept only in the adoption screen's state; nothing is sent anywhere.
 
 ## Getting started
 

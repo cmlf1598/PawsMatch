@@ -7,6 +7,7 @@ describe('mockData', () => {
     expect(mockPets[0]).toMatchObject({
       id: 1,
       name: expect.any(String),
+      breed: expect.any(String),
       bio: expect.any(Array),
       image: expect.any(String),
     })

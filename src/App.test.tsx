@@ -9,6 +9,7 @@ function mockLivePets() {
   return vi.spyOn(petProvider, 'getPetWithLiveImage').mockImplementation(async (id = 1) => ({
     id,
     name: id === 1 ? 'Luna' : `Pet ${id}`,
+    breed: 'mix',
     bio: [`Bio for pet ${id}`, 'Bio 2', 'Bio 3'],
     image: `https://images.dog.ceo/breeds/mix/dog${id}.jpg`,
   }))

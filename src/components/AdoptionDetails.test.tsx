@@ -8,6 +8,7 @@ import type { Pet } from '../types/pet'
 const luna: Pet = {
   id: 1,
   name: 'Luna',
+  breed: 'mix',
   bio: ['Line 1', 'Line 2', 'Line 3'],
   image: 'https://images.dog.ceo/breeds/mix/dog1.jpg',
 }

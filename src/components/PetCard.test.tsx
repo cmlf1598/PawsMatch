@@ -7,6 +7,7 @@ import type { Pet } from '../types/pet'
 const samplePet: Pet = {
   id: 1,
   name: 'Luna',
+  breed: 'mix',
   bio: ['Line 1', 'Line 2', 'Line 3'],
   image: 'https://images.dog.ceo/breeds/mix/dog1.jpg',
 }
@@ -58,16 +59,6 @@ describe('PetCard', () => {
     render(<PetCard pet={samplePet} />)
 
     expect(screen.queryByRole('button')).not.toBeInTheDocument()
-  })
-
-  it('renders and triggers onRefreshPhoto button', async () => {
-    const user = userEvent.setup()
-    const handleRefresh = vi.fn()
-
-    render(<PetCard pet={samplePet} onRefreshPhoto={handleRefresh} />)
-    await user.click(screen.getByRole('button', { name: 'Ver otra foto' }))
-
-    expect(handleRefresh).toHaveBeenCalledOnce()
   })
 
   it('falls back to FALLBACK_IMAGE on image loading error', () => {

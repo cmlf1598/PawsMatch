@@ -15,6 +15,7 @@ describe('useLivePet (Pre-fetch Stack)', () => {
     vi.spyOn(petProvider, 'getPetWithLiveImage').mockImplementation(async (id = 1) => ({
       id,
       name: `Pet ${id}`,
+      breed: 'mix',
       bio: ['Bio 1', 'Bio 2', 'Bio 3'],
       image: `https://images.dog.ceo/breeds/dog${id}.jpg`,
     }))
@@ -34,6 +35,7 @@ describe('useLivePet (Pre-fetch Stack)', () => {
     const getPet = vi.spyOn(petProvider, 'getPetWithLiveImage').mockImplementation(async (id = 1) => ({
       id,
       name: `Pet ${id}`,
+      breed: 'mix',
       bio: ['Bio 1', 'Bio 2', 'Bio 3'],
       image: `https://images.dog.ceo/breeds/dog${id}.jpg`,
     }))
@@ -49,6 +51,7 @@ describe('useLivePet (Pre-fetch Stack)', () => {
     const getPet = vi.spyOn(petProvider, 'getPetWithLiveImage').mockImplementation(async (id = 1) => ({
       id,
       name: `Pet ${id}`,
+      breed: 'mix',
       bio: ['Bio 1', 'Bio 2', 'Bio 3'],
       image: `https://images.dog.ceo/breeds/dog${id}.jpg`,
     }))
@@ -71,6 +74,7 @@ describe('useLivePet (Pre-fetch Stack)', () => {
       .mockImplementation(async (id = 1) => ({
         id,
         name: `Pet ${id}`,
+        breed: 'mix',
         bio: ['Bio 1', 'Bio 2', 'Bio 3'],
         image: `https://images.dog.ceo/breeds/dog${id}.jpg`,
       }))
@@ -88,32 +92,11 @@ describe('useLivePet (Pre-fetch Stack)', () => {
     expect(result.current.pet?.id).toBe(1)
   })
 
-  it('allows refreshing the photo from Dog API', async () => {
-    vi.spyOn(petProvider, 'getPetWithLiveImage').mockImplementation(async (id = 1) => ({
-      id,
-      name: `Pet ${id}`,
-      bio: ['Bio 1', 'Bio 2', 'Bio 3'],
-      image: `https://images.dog.ceo/breeds/dog${id}.jpg`,
-    }))
-    vi.spyOn(petProvider, 'fetchRandomDogImage').mockResolvedValue(
-      'https://images.dog.ceo/breeds/mix/refreshed.jpg',
-    )
-    vi.spyOn(petProvider, 'preloadImage').mockResolvedValue(undefined)
-
-    const { result } = renderHook(() => useLivePet(1))
-    await waitFor(() => expect(result.current.isLoading).toBe(false))
-
-    await act(async () => {
-      await result.current.refreshPhoto()
-    })
-
-    expect(result.current.pet?.image).toBe('https://images.dog.ceo/breeds/mix/refreshed.jpg')
-  })
-
   it('transitions immediately when liking and replenishes buffer in background', async () => {
     vi.spyOn(petProvider, 'getPetWithLiveImage').mockImplementation(async (id = 1) => ({
       id,
       name: `Pet ${id}`,
+      breed: 'mix',
       bio: ['Bio 1', 'Bio 2', 'Bio 3'],
       image: `https://images.dog.ceo/breeds/dog${id}.jpg`,
     }))
@@ -142,6 +125,7 @@ describe('useLivePet (Pre-fetch Stack)', () => {
     vi.spyOn(petProvider, 'getPetWithLiveImage').mockImplementation(async (id = 1) => ({
       id,
       name: `Pet ${id}`,
+      breed: 'mix',
       bio: ['Bio 1', 'Bio 2', 'Bio 3'],
       image: `https://images.dog.ceo/breeds/dog${id}.jpg`,
     }))

@@ -2,6 +2,7 @@
   {
     "id": 1,
     "name": "Luna",
+    "breed": "mix",
     "bio": [
       "Soy una mestiza de 2 años, cariñosa y muy juguetona.",
       "Me llevo bien con niños y otros perros, y ya sé pasear con correa.",
@@ -12,6 +13,7 @@
   {
     "id": 2,
     "name": "Max",
+    "breed": "labrador",
     "bio": [
       "Soy un labrador de 4 años, tranquilo y muy leal.",
       "Busco una familia con patio que disfrute las caminatas largas.",
@@ -22,6 +24,7 @@
   {
     "id": 3,
     "name": "Canela",
+    "breed": "mix",
     "bio": [
       "Soy una cachorra de 6 meses, curiosa y llena de energía.",
       "Necesito una familia paciente que me enseñe y juegue conmigo cada día.",
@@ -32,6 +35,7 @@
   {
     "id": 4,
     "name": "Rocky",
+    "breed": "pitbull",
     "bio": [
       "Soy un pitbull de 3 años: mi apariencia es fuerte, pero soy muy cariñoso.",
       "Prefiero ser el único perro de la casa y adoro dormir junto a mis humanos.",
@@ -42,6 +46,7 @@
   {
     "id": 5,
     "name": "Nala",
+    "breed": "retriever/golden",
     "bio": [
       "Soy una golden retriever de 7 años, dulce y muy tranquila.",
       "Sería ideal para personas mayores o un hogar sin mucho ajetreo.",
@@ -52,6 +57,7 @@
   {
     "id": 6,
     "name": "Toby",
+    "breed": "beagle",
     "bio": [
       "Soy un beagle de 5 años con un olfato increíble y un corazón enorme.",
       "Me encanta explorar, así que necesito un hogar con paseos diarios.",
@@ -62,6 +68,7 @@
   {
     "id": 7,
     "name": "Mía",
+    "breed": "chihuahua",
     "bio": [
       "Soy una chihuahua de 3 años, pequeña pero muy valiente.",
       "Soy perfecta para apartamento y me encanta estar en tus piernas.",
@@ -72,6 +79,7 @@
   {
     "id": 8,
     "name": "Bruno",
+    "breed": "german/shepherd",
     "bio": [
       "Soy un pastor alemán de 2 años, inteligente y protector.",
       "Busco a alguien activo que quiera entrenar y hacer deporte conmigo.",
@@ -82,6 +90,7 @@
   {
     "id": 9,
     "name": "Frida",
+    "breed": "mix",
     "bio": [
       "Soy una mestiza de 1 año con orejas enormes y mucha personalidad.",
       "Soy sociable con gatos, así que me adapto a hogares con otras mascotas.",
@@ -92,6 +101,7 @@
   {
     "id": 10,
     "name": "Coco",
+    "breed": "poodle/toy",
     "bio": [
       "Soy un poodle de 9 años, tierno, tranquilo y muy educado.",
       "Mi familia anterior ya no pudo cuidarme y extraño tener un sofá propio.",
@@ -102,6 +112,7 @@
   {
     "id": 11,
     "name": "Simba",
+    "breed": "husky",
     "bio": [
       "Soy un husky de 3 años, aventurero y muy conversador.",
       "Necesito un hogar activo, con clima fresco y paseos largos todos los días.",
@@ -112,6 +123,7 @@
   {
     "id": 12,
     "name": "Kira",
+    "breed": "collie/border",
     "bio": [
       "Soy una border collie de 2 años, rapidísima y muy obediente.",
       "Me encantan los retos: juegos de pelota, trucos y entrenamiento diario.",
@@ -122,6 +134,7 @@
   {
     "id": 13,
     "name": "Thor",
+    "breed": "rottweiler",
     "bio": [
       "Soy un rottweiler de 5 años, protector, tranquilo y muy noble.",
       "Me va mejor con adultos con experiencia en perros grandes.",
@@ -132,6 +145,7 @@
   {
     "id": 14,
     "name": "Lola",
+    "breed": "dachshund",
     "bio": [
       "Soy una salchicha de 4 años, simpática y algo testaruda.",
       "Me adapto bien a un apartamento, pero necesito evitar las escaleras.",
@@ -142,6 +156,7 @@
   {
     "id": 15,
     "name": "Zeus",
+    "breed": "dane/great",
     "bio": [
       "Soy un gran danés de 3 años: enorme por fuera, muy gentil por dentro.",
       "Necesito un hogar con espacio y una familia que no le tema a mi tamaño.",
@@ -152,6 +167,7 @@
   {
     "id": 16,
     "name": "Maya",
+    "breed": "mix",
     "bio": [
       "Soy una mestiza de 5 años, tranquila y muy agradecida.",
       "Me encanta acompañar a mis humanos mientras trabajan desde casa.",
@@ -162,6 +178,7 @@
   {
     "id": 17,
     "name": "Rufo",
+    "breed": "bulldog/english",
     "bio": [
       "Soy un bulldog inglés de 6 años, dormilón y muy cariñoso.",
       "Prefiero los paseos cortos y un hogar fresco, sin mucho calor.",
@@ -172,6 +189,7 @@
   {
     "id": 18,
     "name": "Bella",
+    "breed": "spaniel/cocker",
     "bio": [
       "Soy una cocker spaniel de 4 años, dulce y muy sociable.",
       "Me llevo de maravilla con niños, gatos y otros perros.",
@@ -182,6 +200,7 @@
   {
     "id": 19,
     "name": "Oso",
+    "breed": "stbernard",
     "bio": [
       "Soy un san bernardo de 2 años, bonachón y muy paciente.",
       "Sería feliz en una casa con jardín y una familia con niños.",
@@ -192,6 +211,7 @@
   {
     "id": 20,
     "name": "Pelusa",
+    "breed": "maltese",
     "bio": [
       "Soy una maltés de 8 años, delicada, tranquila y muy mimosa.",
       "Busco un hogar sereno, ideal para una persona mayor o una pareja.",
@@ -202,6 +222,7 @@
   {
     "id": 21,
     "name": "Duke",
+    "breed": "boxer",
     "bio": [
       "Soy un boxer de 3 años, payaso, alegre y muy leal.",
       "Me encanta jugar con niños, aunque a veces olvido mi tamaño.",
@@ -212,6 +233,7 @@
   {
     "id": 22,
     "name": "Sasha",
+    "breed": "samoyed",
     "bio": [
       "Soy una samoyedo de 2 años y siempre estoy sonriendo.",
       "Necesito cepillado frecuente y un hogar donde no me dejen sola.",
@@ -222,6 +244,7 @@
   {
     "id": 23,
     "name": "Chispa",
+    "breed": "terrier/russell",
     "bio": [
       "Soy una jack russell de 1 año, inquieta y muy divertida.",
       "Busco una familia activa con tiempo para jugar y paseos diarios.",
@@ -232,6 +255,7 @@
   {
     "id": 24,
     "name": "Tango",
+    "breed": "dalmatian",
     "bio": [
       "Soy un dálmata de 4 años, elegante y lleno de energía.",
       "Me encanta correr, así que soy ideal para alguien deportista.",
@@ -242,6 +266,7 @@
   {
     "id": 25,
     "name": "Princesa",
+    "breed": "shihtzu",
     "bio": [
       "Soy una shih tzu de 6 años, coqueta y muy tranquila.",
       "Soy perfecta para apartamento y para familias con poco tiempo libre.",
@@ -252,6 +277,7 @@
   {
     "id": 26,
     "name": "Bobby",
+    "breed": "schnauzer/miniature",
     "bio": [
       "Soy un schnauzer miniatura de 7 años, alerta y muy cariñoso.",
       "Soy un buen guardián de casa y me encanta acompañar en el sofá.",
@@ -262,6 +288,7 @@
   {
     "id": 27,
     "name": "Kiara",
+    "breed": "mix",
     "bio": [
       "Soy una mestiza de 3 años, tímida al principio y muy amorosa después.",
       "Necesito una familia paciente que me dé tiempo para confiar.",
@@ -272,6 +299,7 @@
   {
     "id": 28,
     "name": "Lucas",
+    "breed": "pug",
     "bio": [
       "Soy un pug de 5 años, glotón, gracioso y muy apegado.",
       "Me adapto a cualquier hogar, siempre que pueda dormir contigo.",
@@ -282,6 +310,7 @@
   {
     "id": 29,
     "name": "Nieve",
+    "breed": "pyrenees",
     "bio": [
       "Soy una pastora de los Pirineos de 3 años, serena y protectora.",
       "Necesito espacio y una familia que entienda mi carácter independiente.",
@@ -292,6 +321,7 @@
   {
     "id": 30,
     "name": "Ramón",
+    "breed": "hound/basset",
     "bio": [
       "Soy un basset hound de 8 años, calmado y con orejas larguísimas.",
       "Sigo una dieta especial para cuidar mi peso y mi espalda.",
@@ -302,6 +332,7 @@
   {
     "id": 31,
     "name": "Greta",
+    "breed": "doberman",
     "bio": [
       "Soy una doberman de 4 años, inteligente, sensible y muy leal.",
       "Me pongo nerviosa con los ruidos fuertes y necesito un hogar tranquilo.",
@@ -312,6 +343,7 @@
   {
     "id": 32,
     "name": "Pancho",
+    "breed": "mix",
     "bio": [
       "Soy un mestizo de 10 años, sabio, tranquilo y muy cariñoso.",
       "Ya no necesito correr; me basta con un rincón cálido y tu compañía.",
@@ -322,6 +354,7 @@
   {
     "id": 33,
     "name": "Chloe",
+    "breed": "pomeranian",
     "bio": [
       "Soy una pomerania de 2 años, pequeña, esponjosa y muy vivaz.",
       "Soy ideal para apartamento y me encanta que me lleven a todos lados.",
@@ -332,6 +365,7 @@
   {
     "id": 34,
     "name": "Bongo",
+    "breed": "greyhound",
     "bio": [
       "Soy un galgo de 6 años, rescatado y algo tímido con extraños.",
       "Corro rápido, pero en casa soy el perro más tranquilo del mundo.",
@@ -342,6 +376,7 @@
   {
     "id": 35,
     "name": "Lupe",
+    "breed": "pembroke",
     "bio": [
       "Soy una corgi de 3 años, alegre, curiosa y muy comunicativa.",
       "Me llevo bien con niños y me encanta pasear por el parque.",
@@ -352,6 +387,7 @@
   {
     "id": 36,
     "name": "Rex",
+    "breed": "malinois",
     "bio": [
       "Soy un pastor belga malinois de 2 años, enérgico y muy inteligente.",
       "Necesito un tutor con experiencia y mucho tiempo para entrenar.",
@@ -362,6 +398,7 @@
   {
     "id": 37,
     "name": "Lila",
+    "breed": "whippet",
     "bio": [
       "Soy una whippet de 5 años, delicada, veloz y muy dulce.",
       "Me encantan las mantas, el sofá y una buena carrera en el parque.",
@@ -372,6 +409,7 @@
   {
     "id": 38,
     "name": "Tomás",
+    "breed": "akita",
     "bio": [
       "Soy un akita de 6 años, digno, leal y algo reservado.",
       "Prefiero ser el único perro de la casa y un hogar con adultos.",
@@ -382,6 +420,7 @@
   {
     "id": 39,
     "name": "Pepa",
+    "breed": "bulldog/french",
     "bio": [
       "Soy una bulldog francés de 3 años, divertida y muy cariñosa.",
       "Me adapto bien a un apartamento y no necesito paseos largos.",
@@ -392,6 +431,7 @@
   {
     "id": 40,
     "name": "Hachi",
+    "breed": "shiba",
     "bio": [
       "Soy un shiba inu de 4 años, limpio, independiente y muy expresivo.",
       "Busco una familia con experiencia que respete mi espacio.",
@@ -402,6 +442,7 @@
   {
     "id": 41,
     "name": "Dulce",
+    "breed": "cavapoo",
     "bio": [
       "Soy una cavapoo de 1 año, alegre, cariñosa y casi no suelto pelo.",
       "Me encantan los niños y aprendo trucos muy rápido.",
@@ -412,6 +453,7 @@
   {
     "id": 42,
     "name": "Bolt",
+    "breed": "weimaraner",
     "bio": [
       "Soy un weimaraner de 2 años, atlético y muy apegado a mi gente.",
       "Necesito ejercicio diario y no me gusta pasar mucho tiempo solo.",
@@ -422,6 +464,7 @@
   {
     "id": 43,
     "name": "Manchas",
+    "breed": "mix",
     "bio": [
       "Soy un mestizo de 4 años con manchas únicas y un gran corazón.",
       "Me llevo bien con todos: niños, perros y hasta gatos.",
@@ -432,6 +475,7 @@
   {
     "id": 44,
     "name": "Abril",
+    "breed": "mountain/bernese",
     "bio": [
       "Soy una boyero de Berna de 3 años, tranquila y muy afectuosa.",
       "Me encantan los niños y los climas frescos.",
@@ -442,6 +486,7 @@
   {
     "id": 45,
     "name": "Chester",
+    "breed": "terrier/yorkshire",
     "bio": [
       "Soy un yorkshire de 9 años, pequeño, valiente y muy mimoso.",
       "Ya perdí algunos dientes, pero no las ganas de recibir cariño.",
@@ -452,6 +497,7 @@
   {
     "id": 46,
     "name": "Kaiser",
+    "breed": "chow",
     "bio": [
       "Soy un chow chow de 5 años, independiente y muy tranquilo.",
       "Prefiero un hogar con adultos y paseos sin prisas.",
@@ -462,6 +508,7 @@
   {
     "id": 47,
     "name": "Nina",
+    "breed": "vizsla",
     "bio": [
       "Soy una vizsla de 2 años, cariñosa, activa y muy pegada a mis humanos.",
       "Sería feliz con una familia deportista que me lleve de excursión.",
@@ -472,6 +519,7 @@
   {
     "id": 48,
     "name": "Pirata",
+    "breed": "mix",
     "bio": [
       "Soy un mestizo de 6 años y perdí un ojo, pero no la alegría.",
       "Me adapto perfecto a mi condición y no necesito cuidados especiales.",
@@ -482,6 +530,7 @@
   {
     "id": 49,
     "name": "Olivia",
+    "breed": "labradoodle",
     "bio": [
       "Soy una labradoodle de 2 años, juguetona y muy sociable.",
       "Suelto poco pelo, así que soy buena opción para personas con alergias.",
@@ -492,6 +541,7 @@
   {
     "id": 50,
     "name": "Sultán",
+    "breed": "mastiff/english",
     "bio": [
       "Soy un mastín de 7 años, imponente pero muy tranquilo y gentil.",
       "Necesito un hogar con espacio y una familia que me dé muchos mimos.",
