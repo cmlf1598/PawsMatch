@@ -1,0 +1,502 @@
+[
+  {
+    "id": 1,
+    "name": "Luna",
+    "bio": [
+      "Soy una mestiza de 2 años, cariñosa y muy juguetona.",
+      "Me llevo bien con niños y otros perros, y ya sé pasear con correa.",
+      "Estoy vacunada y esterilizada, lista para llegar a mi hogar para siempre."
+    ],
+    "image": "https://images.dog.ceo/breeds/mix/dog1.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Max",
+    "bio": [
+      "Soy un labrador de 4 años, tranquilo y muy leal.",
+      "Busco una familia con patio que disfrute las caminatas largas.",
+      "Llevo meses esperando en el refugio; ¿serás tú quien me lleve a casa?"
+    ],
+    "image": "https://images.dog.ceo/breeds/labrador/n02099712_7142.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Canela",
+    "bio": [
+      "Soy una cachorra de 6 meses, curiosa y llena de energía.",
+      "Necesito una familia paciente que me enseñe y juegue conmigo cada día.",
+      "Tengo mis primeras vacunas y muchas ganas de aprender."
+    ],
+    "image": "https://images.dog.ceo/breeds/mix/xeshabelka_(34).jpg"
+  },
+  {
+    "id": 4,
+    "name": "Rocky",
+    "bio": [
+      "Soy un pitbull de 3 años: mi apariencia es fuerte, pero soy un gran apapachador.",
+      "Prefiero ser el único perro de la casa y adoro dormir junto a mis humanos.",
+      "Estoy esterilizado, sano y listo para demostrar lo noble que soy."
+    ],
+    "image": "https://images.dog.ceo/breeds/pitbull/dog-3981033_1280.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Nala",
+    "bio": [
+      "Soy una golden retriever de 7 años, dulce y muy tranquila.",
+      "Sería ideal para personas mayores o un hogar sin mucho ajetreo.",
+      "Los perros adultos también tenemos mucho amor que dar; adóptame."
+    ],
+    "image": "https://images.dog.ceo/breeds/retriever-golden/20200801_174527_200801.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Toby",
+    "bio": [
+      "Soy un beagle de 5 años con un olfato increíble y un corazón enorme.",
+      "Me encanta explorar, así que necesito un hogar con paseos diarios.",
+      "Estoy vacunado, desparasitado y esperando mi segunda oportunidad."
+    ],
+    "image": "https://images.dog.ceo/breeds/beagle/n02088364_16493.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Mía",
+    "bio": [
+      "Soy una chihuahua de 3 años, pequeña pero muy valiente.",
+      "Soy perfecta para departamento y me encanta estar en tus piernas.",
+      "Me rescataron de la calle y hoy sueño con una familia que me cuide."
+    ],
+    "image": "https://images.dog.ceo/breeds/chihuahua/n02085620_4016.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Bruno",
+    "bio": [
+      "Soy un pastor alemán de 2 años, inteligente y protector.",
+      "Busco a alguien activo que quiera entrenar y hacer deporte conmigo.",
+      "Estoy esterilizado y con todas mis vacunas al día."
+    ],
+    "image": "https://images.dog.ceo/breeds/german-shepherd/img_20200801_005827_704.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Frida",
+    "bio": [
+      "Soy una mestiza de 1 año con orejas enormes y mucha personalidad.",
+      "Soy sociable con gatos, así que me adapto a hogares con otras mascotas.",
+      "Estoy vacunada y esterilizada, y solo me falta tu hogar."
+    ],
+    "image": "https://images.dog.ceo/breeds/mix/toby1.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Coco",
+    "bio": [
+      "Soy un poodle de 9 años, tierno, tranquilo y muy educado.",
+      "Mi familia anterior ya no pudo cuidarme y extraño tener un sofá propio.",
+      "Adoptar a un perro senior cambia dos vidas: la mía y la tuya."
+    ],
+    "image": "https://images.dog.ceo/breeds/poodle-toy/n02113624_6868.jpg"
+  },
+  {
+    "id": 11,
+    "name": "Simba",
+    "bio": [
+      "Soy un husky de 3 años, aventurero y muy conversador.",
+      "Necesito un hogar activo, con clima fresco y paseos largos todos los días.",
+      "Estoy esterilizado y vacunado, listo para correr a tu lado."
+    ],
+    "image": "https://images.dog.ceo/breeds/husky/n02110185_4133.jpg"
+  },
+  {
+    "id": 12,
+    "name": "Kira",
+    "bio": [
+      "Soy una border collie de 2 años, rapidísima y muy obediente.",
+      "Me encantan los retos: juegos de pelota, trucos y entrenamiento diario.",
+      "Busco una familia que quiera compartir su energía conmigo."
+    ],
+    "image": "https://images.dog.ceo/breeds/collie-border/n02106166_924.jpg"
+  },
+  {
+    "id": 13,
+    "name": "Thor",
+    "bio": [
+      "Soy un rottweiler de 5 años, protector, tranquilo y muy noble.",
+      "Me va mejor con adultos con experiencia en perros grandes.",
+      "Estoy sano y esterilizado; solo necesito a alguien que confíe en mí."
+    ],
+    "image": "https://images.dog.ceo/breeds/rottweiler/n02106550_5028.jpg"
+  },
+  {
+    "id": 14,
+    "name": "Lola",
+    "bio": [
+      "Soy una salchicha de 4 años, simpática y algo testaruda.",
+      "Me adapto bien a un departamento, pero necesito evitar las escaleras.",
+      "Estoy vacunada y desparasitada; prometo llenar tu casa de alegría."
+    ],
+    "image": "https://images.dog.ceo/breeds/dachshund/dachshund-3.jpg"
+  },
+  {
+    "id": 15,
+    "name": "Zeus",
+    "bio": [
+      "Soy un gran danés de 3 años: enorme por fuera, muy gentil por dentro.",
+      "Necesito un hogar con espacio y una familia que no le tema a mi tamaño.",
+      "Estoy esterilizado y listo para ser tu gigante consentido."
+    ],
+    "image": "https://images.dog.ceo/breeds/dane-great/n02109047_21903.jpg"
+  },
+  {
+    "id": 16,
+    "name": "Maya",
+    "bio": [
+      "Soy una mestiza de 5 años, tranquila y muy agradecida.",
+      "Me encanta acompañar a mis humanos mientras trabajan desde casa.",
+      "Llevo un año en el refugio esperando que alguien me elija."
+    ],
+    "image": "https://images.dog.ceo/breeds/mix/mydog-preta.jpg"
+  },
+  {
+    "id": 17,
+    "name": "Rufo",
+    "bio": [
+      "Soy un bulldog inglés de 6 años, dormilón y muy cariñoso.",
+      "Prefiero los paseos cortos y un hogar fresco, sin mucho calor.",
+      "Estoy esterilizado y con mis chequeos al día; adóptame y roncaremos juntos."
+    ],
+    "image": "https://images.dog.ceo/breeds/bulldog-english/jager-2.jpg"
+  },
+  {
+    "id": 18,
+    "name": "Bella",
+    "bio": [
+      "Soy una cocker spaniel de 4 años, dulce y muy sociable.",
+      "Me llevo de maravilla con niños, gatos y otros perros.",
+      "Estoy vacunada y esterilizada, lista para mi nueva familia."
+    ],
+    "image": "https://images.dog.ceo/breeds/spaniel-cocker/n02102318_208.jpg"
+  },
+  {
+    "id": 19,
+    "name": "Oso",
+    "bio": [
+      "Soy un san bernardo de 2 años, bonachón y muy paciente.",
+      "Sería feliz en una casa con jardín y una familia con niños.",
+      "Estoy vacunado y listo para dar los abrazos más grandes."
+    ],
+    "image": "https://images.dog.ceo/breeds/stbernard/n02109525_3448.jpg"
+  },
+  {
+    "id": 20,
+    "name": "Pelusa",
+    "bio": [
+      "Soy una maltés de 8 años, delicada, tranquila y muy mimosa.",
+      "Busco un hogar sereno, ideal para una persona mayor o una pareja.",
+      "Mi dueña falleció y hoy necesito un nuevo regazo donde descansar."
+    ],
+    "image": "https://images.dog.ceo/breeds/maltese/n02085936_8616.jpg"
+  },
+  {
+    "id": 21,
+    "name": "Duke",
+    "bio": [
+      "Soy un boxer de 3 años, payaso, alegre y muy leal.",
+      "Me encanta jugar con niños, aunque a veces olvido mi tamaño.",
+      "Estoy esterilizado y vacunado, listo para unirme a tu familia."
+    ],
+    "image": "https://images.dog.ceo/breeds/boxer/n02108089_2718.jpg"
+  },
+  {
+    "id": 22,
+    "name": "Sasha",
+    "bio": [
+      "Soy una samoyedo de 2 años y siempre estoy sonriendo.",
+      "Necesito cepillado frecuente y un hogar donde no me dejen sola.",
+      "Estoy esterilizada y vacunada; solo me falta tu cariño."
+    ],
+    "image": "https://images.dog.ceo/breeds/samoyed/n02111889_8748.jpg"
+  },
+  {
+    "id": 23,
+    "name": "Chispa",
+    "bio": [
+      "Soy una jack russell de 1 año, inquieta y muy divertida.",
+      "Busco una familia activa con tiempo para jugar y paseos diarios.",
+      "Estoy vacunada y aprendiendo a convivir; ¿me ayudas a crecer?"
+    ],
+    "image": "https://images.dog.ceo/breeds/terrier-russell/img_0236.jpg"
+  },
+  {
+    "id": 24,
+    "name": "Tango",
+    "bio": [
+      "Soy un dálmata de 4 años, elegante y lleno de energía.",
+      "Me encanta correr, así que soy ideal para alguien deportista.",
+      "Estoy esterilizado y sano, esperando mi segunda oportunidad."
+    ],
+    "image": "https://images.dog.ceo/breeds/dalmatian/cooper1.jpg"
+  },
+  {
+    "id": 25,
+    "name": "Princesa",
+    "bio": [
+      "Soy una shih tzu de 6 años, coqueta y muy tranquila.",
+      "Soy perfecta para departamento y para familias con poco tiempo libre.",
+      "Estoy vacunada, esterilizada y lista para que me consientas."
+    ],
+    "image": "https://images.dog.ceo/breeds/shihtzu/n02086240_4808.jpg"
+  },
+  {
+    "id": 26,
+    "name": "Bobby",
+    "bio": [
+      "Soy un schnauzer miniatura de 7 años, alerta y muy cariñoso.",
+      "Soy un buen guardián de casa y me encanta acompañar en el sofá.",
+      "Estoy sano y esterilizado; los perros maduros somos compañeros fieles."
+    ],
+    "image": "https://images.dog.ceo/breeds/schnauzer-miniature/n02097047_1601.jpg"
+  },
+  {
+    "id": 27,
+    "name": "Kiara",
+    "bio": [
+      "Soy una mestiza de 3 años, tímida al principio y muy amorosa después.",
+      "Necesito una familia paciente que me dé tiempo para confiar.",
+      "Me rescataron de la calle y estoy vacunada y esterilizada."
+    ],
+    "image": "https://images.dog.ceo/breeds/mix/uhie.jpg"
+  },
+  {
+    "id": 28,
+    "name": "Lucas",
+    "bio": [
+      "Soy un pug de 5 años, glotón, gracioso y muy apegado.",
+      "Me adapto a cualquier hogar, siempre que pueda dormir contigo.",
+      "Estoy esterilizado y con mis vacunas al día."
+    ],
+    "image": "https://images.dog.ceo/breeds/pug/alfmns.jpg"
+  },
+  {
+    "id": 29,
+    "name": "Nieve",
+    "bio": [
+      "Soy una pastora de los Pirineos de 3 años, serena y protectora.",
+      "Necesito espacio y una familia que entienda mi carácter independiente.",
+      "Estoy esterilizada y lista para cuidar de tu hogar."
+    ],
+    "image": "https://images.dog.ceo/breeds/pyrenees/n02111500_7583.jpg"
+  },
+  {
+    "id": 30,
+    "name": "Ramón",
+    "bio": [
+      "Soy un basset hound de 8 años, calmado y con orejas larguísimas.",
+      "Sigo una dieta especial para cuidar mi peso y mi espalda.",
+      "Busco un hogar tranquilo donde pasar mis mejores años."
+    ],
+    "image": "https://images.dog.ceo/breeds/hound-basset/n02088238_10682.jpg"
+  },
+  {
+    "id": 31,
+    "name": "Greta",
+    "bio": [
+      "Soy una doberman de 4 años, inteligente, sensible y muy leal.",
+      "Me pongo nerviosa con los ruidos fuertes y necesito un hogar tranquilo.",
+      "Estoy esterilizada; con paciencia, seré tu mejor compañera."
+    ],
+    "image": "https://images.dog.ceo/breeds/doberman/n02107142_3709.jpg"
+  },
+  {
+    "id": 32,
+    "name": "Pancho",
+    "bio": [
+      "Soy un mestizo de 10 años, sabio, tranquilo y muy cariñoso.",
+      "Ya no necesito correr; me basta con un rincón cálido y tu compañía.",
+      "Adoptar a un senior es regalarle un final feliz."
+    ],
+    "image": "https://images.dog.ceo/breeds/mix/puma02.jpg"
+  },
+  {
+    "id": 33,
+    "name": "Chloe",
+    "bio": [
+      "Soy una pomerania de 2 años, pequeña, esponjosa y muy vivaz.",
+      "Soy ideal para departamento y me encanta que me lleven a todos lados.",
+      "Estoy vacunada y esterilizada, lista para mi nuevo hogar."
+    ],
+    "image": "https://images.dog.ceo/breeds/pomeranian/n02112018_4583.jpg"
+  },
+  {
+    "id": 34,
+    "name": "Bongo",
+    "bio": [
+      "Soy un galgo de 6 años, rescatado y algo tímido con extraños.",
+      "Corro rápido, pero en casa soy el perro más tranquilo del mundo.",
+      "Busco una familia que me enseñe que ya estoy a salvo."
+    ],
+    "image": "https://images.dog.ceo/breeds/greyhound-italian/n02091032_4323.jpg"
+  },
+  {
+    "id": 35,
+    "name": "Lupe",
+    "bio": [
+      "Soy una corgi de 3 años, alegre, curiosa y muy comunicativa.",
+      "Me llevo bien con niños y me encanta pasear por el parque.",
+      "Estoy esterilizada y vacunada, lista para mover la colita en tu casa."
+    ],
+    "image": "https://images.dog.ceo/breeds/pembroke/n02113023_209.jpg"
+  },
+  {
+    "id": 36,
+    "name": "Rex",
+    "bio": [
+      "Soy un pastor belga malinois de 2 años, enérgico y muy inteligente.",
+      "Necesito un tutor con experiencia y mucho tiempo para entrenar.",
+      "Estoy sano y esterilizado; con la guía correcta, seré increíble."
+    ],
+    "image": "https://images.dog.ceo/breeds/malinois/n02105162_5954.jpg"
+  },
+  {
+    "id": 37,
+    "name": "Lila",
+    "bio": [
+      "Soy una whippet de 5 años, delicada, veloz y muy dulce.",
+      "Me encantan las mantas, el sofá y una buena carrera en el parque.",
+      "Estoy esterilizada y lista para ser tu sombra."
+    ],
+    "image": "https://images.dog.ceo/breeds/whippet/n02091134_12272.jpg"
+  },
+  {
+    "id": 38,
+    "name": "Tomás",
+    "bio": [
+      "Soy un akita de 6 años, digno, leal y algo reservado.",
+      "Prefiero ser el único perro de la casa y un hogar con adultos.",
+      "Estoy esterilizado; cuando confío en alguien, es para siempre."
+    ],
+    "image": "https://images.dog.ceo/breeds/akita/akita_inu_dog.jpg"
+  },
+  {
+    "id": 39,
+    "name": "Pepa",
+    "bio": [
+      "Soy una bulldog francés de 3 años, divertida y muy apapachadora.",
+      "Me adapto bien a departamento y no necesito paseos largos.",
+      "Estoy vacunada y esterilizada; adóptame y no te arrepentirás."
+    ],
+    "image": "https://images.dog.ceo/breeds/bulldog-french/n02108915_2980.jpg"
+  },
+  {
+    "id": 40,
+    "name": "Hachi",
+    "bio": [
+      "Soy un shiba inu de 4 años, limpio, independiente y muy expresivo.",
+      "Busco una familia con experiencia que respete mi espacio.",
+      "Estoy esterilizado y listo para enseñarte lo que es la lealtad."
+    ],
+    "image": "https://images.dog.ceo/breeds/shiba/shiba-9.jpg"
+  },
+  {
+    "id": 41,
+    "name": "Dulce",
+    "bio": [
+      "Soy una cavapoo de 1 año, alegre, cariñosa y casi no suelto pelo.",
+      "Me encantan los niños y aprendo trucos muy rápido.",
+      "Estoy vacunada y lista para convertirme en tu mejor amiga."
+    ],
+    "image": "https://images.dog.ceo/breeds/cavapoo/doggo1.jpg"
+  },
+  {
+    "id": 42,
+    "name": "Bolt",
+    "bio": [
+      "Soy un weimaraner de 2 años, atlético y muy apegado a mi gente.",
+      "Necesito ejercicio diario y no me gusta pasar mucho tiempo solo.",
+      "Estoy esterilizado y vacunado, listo para salir a correr contigo."
+    ],
+    "image": "https://images.dog.ceo/breeds/weimaraner/n02092339_3345.jpg"
+  },
+  {
+    "id": 43,
+    "name": "Manchas",
+    "bio": [
+      "Soy un mestizo de 4 años con manchas únicas y un gran corazón.",
+      "Me llevo bien con todos: niños, perros y hasta gatos.",
+      "Estoy vacunado y esterilizado; solo espero que me elijas."
+    ],
+    "image": "https://images.dog.ceo/breeds/mix/photo_2025-11-17_02-13-24.jpg"
+  },
+  {
+    "id": 44,
+    "name": "Abril",
+    "bio": [
+      "Soy una boyero de Berna de 3 años, tranquila y muy afectuosa.",
+      "Me encantan los niños y los climas frescos.",
+      "Estoy esterilizada y vacunada, lista para formar parte de tu familia."
+    ],
+    "image": "https://images.dog.ceo/breeds/mountain-bernese/n02107683_6846.jpg"
+  },
+  {
+    "id": 45,
+    "name": "Chester",
+    "bio": [
+      "Soy un yorkshire de 9 años, pequeño, valiente y muy mimoso.",
+      "Ya perdí algunos dientes, pero no las ganas de recibir cariño.",
+      "Busco un hogar tranquilo para disfrutar mi vida senior."
+    ],
+    "image": "https://images.dog.ceo/breeds/terrier-yorkshire/n02094433_8977.jpg"
+  },
+  {
+    "id": 46,
+    "name": "Kaiser",
+    "bio": [
+      "Soy un chow chow de 5 años, independiente y muy tranquilo.",
+      "Prefiero un hogar con adultos y paseos sin prisas.",
+      "Estoy esterilizado y con mis vacunas al día."
+    ],
+    "image": "https://images.dog.ceo/breeds/chow/n02112137_8083.jpg"
+  },
+  {
+    "id": 47,
+    "name": "Nina",
+    "bio": [
+      "Soy una vizsla de 2 años, cariñosa, activa y muy pegada a mis humanos.",
+      "Sería feliz con una familia deportista que me lleve de excursión.",
+      "Estoy esterilizada y lista para seguirte a todas partes."
+    ],
+    "image": "https://images.dog.ceo/breeds/vizsla/n02100583_2985.jpg"
+  },
+  {
+    "id": 48,
+    "name": "Pirata",
+    "bio": [
+      "Soy un mestizo de 6 años y perdí un ojo, pero no la alegría.",
+      "Me adapto perfecto a mi condición y no necesito cuidados especiales.",
+      "Estoy vacunado y esterilizado; mírame con el corazón y adóptame."
+    ],
+    "image": "https://images.dog.ceo/breeds/mix/luis.jpg"
+  },
+  {
+    "id": 49,
+    "name": "Olivia",
+    "bio": [
+      "Soy una labradoodle de 2 años, juguetona y muy sociable.",
+      "Suelto poco pelo, así que soy buena opción para personas con alergias.",
+      "Estoy vacunada y esterilizada, esperando a mi familia ideal."
+    ],
+    "image": "https://images.dog.ceo/breeds/labradoodle/cali.jpg"
+  },
+  {
+    "id": 50,
+    "name": "Sultán",
+    "bio": [
+      "Soy un mastín de 7 años, imponente pero muy tranquilo y gentil.",
+      "Necesito un hogar con espacio y una familia que me dé muchos mimos.",
+      "Estoy esterilizado; los perros grandes también merecemos una casa."
+    ],
+    "image": "https://images.dog.ceo/breeds/mastiff-english/4.jpg"
+  }
+]
