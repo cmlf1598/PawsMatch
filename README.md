@@ -4,6 +4,43 @@ A mobile-first web app that shows dogs up for adoption one card at a time. Swipe
 
 The UI is in Spanish (Guatemala, `es-GT`); the code and docs are in English.
 
+## App Showcase
+
+| Landing state | Swipes, transitions and actions |
+| :---: | :---: |
+| <img src="assets/screenshot-landing.png" alt="PawsMatch landing screen: Luna's card with photo, bio, and Pasar / Adoptar buttons" width="300"> | <img src="assets/pawsmatch-demo.gif" alt="Demo: swiping cards, passing and adopting, the adoption screen and scheduling a visit" width="300"> |
+
+▶ **Full-quality video:** [assets/pawsmatch-demo.mp4](assets/pawsmatch-demo.mp4) (H.264, 780×1688, 30 fps, 31 s). The animated GIF above is the same recording, downscaled, because GitHub doesn't play videos stored in the repository inline.
+
+**What the demo shows, in order:**
+
+1. **Drag feedback:** dragging the top card partway shows the **ADOPTAR** / **PASAR** stamps; releasing below the threshold springs the card back.
+2. **Swipe left to pass:** the card flies off and the next dog (Max) steps up from behind.
+3. **Pasar button:** same fly-out animation, triggered by a tap.
+4. **Swipe right to adopt:** the adoption screen slides in from the right for Canela.
+5. **Adoption details:** shelter, location with a **Cómo llegar** link, tap-to-call / tap-to-email contact, and visiting hours.
+6. **Agendar visita:** the bottom sheet lists the shelter's open days and one-hour slots; confirming shows **¡Visita agendada!** with the date and time in `es-GT` format.
+7. **Seguir explorando:** back to the deck, which kept its pre-fetched stack.
+8. **Adoptar button and back arrow:** the tap path into the adoption screen for Rocky, then back to the next dog; the heart counter tracks adoptions.
+
+### UI/UX features: technical summary
+
+| Area | Implementation |
+| --- | --- |
+| **Swipe gestures** | Framer Motion `drag="x"` on the top card with motion values: rotation (`useTransform`, tilting up to ±24° at the fly-out distance) and stamp opacity follow the finger. A decision fires past 110 px or 600 px/s; otherwise `dragConstraints` springs the card back. Buttons and swipes share one code path: animate off-screen, then report the decision, so the stack never jumps mid-animation and repeated taps are ignored. |
+| **Card stack** | The two front cards render as absolutely positioned layers keyed by pet id. When the top card leaves, the same React element springs from the "behind" pose (`scale 0.95, y 24, opacity 0.6`) to the front, and the new back card fades in. The back card is `aria-hidden` and `inert`. |
+| **Zero-latency transitions** | `useLivePet` keeps a pre-fetch buffer of 3 pets with preloaded images and refills it in the background, so the next card is always ready. Its initial load runs once per load key behind a `useRef` guard, so StrictMode doesn't fetch twice. |
+| **Stable, breed-matched photos** | Each dog gets one live Dog CEO photo of its own breed, fetched once and remembered in `localStorage`, with a bundled fallback when the API is unreachable. |
+| **Navigation** | The adoption screen is an overlay with a native-style horizontal push/pop animation. The deck underneath stays mounted (state preserved) and becomes `inert`. Focus moves to the new screen's heading for screen readers. |
+| **Bottom sheet** | `role="dialog"` + `aria-modal`, spring slide-up, drag-down to dismiss, backdrop tap and Escape to close, background made `inert`. Day and time chips are `aria-pressed` toggle buttons; slots are computed from the shelter's visiting hours by `getVisitSlots()`. |
+| **Glassmorphism** | Translucent white fills (`bg-white/10`), `backdrop-blur-xl`, hairline `border-white/20` and large radii (`rounded-[2rem]`) over a dark base with warm, blurred light blobs that give the glass something to frost. |
+| **Mobile-first, native feel** | `h-dvh` layout, safe-area insets (`viewport-fit=cover` + `env(safe-area-inset-*)`), 44–56 px touch targets, press-scale feedback, haptic tick on Android (`navigator.vibrate`), no tap highlight, overscroll bounce or image ghost-dragging, `theme-color` and home-screen web-app meta tags. |
+| **States** | Glass skeleton while loading, an error card with **Reintentar**, and an end-of-deck summary with **Empezar de nuevo**. |
+| **Accessibility** | Labeled icon buttons (`Adoptar: Luna`, `Pasar: Luna`), `role="status"` / `role="alert"` regions, visible focus rings, decorative icons `aria-hidden`, and `MotionConfig reducedMotion="user"` honoring the OS reduce-motion setting. |
+| **Localization** | All UI text in Guatemalan Spanish, `<html lang="es-GT">`, dates and times via `Intl.DateTimeFormat('es-GT')` (for example "miércoles, 21 de octubre" and "10:00 a. m."). |
+
+The screenshot and video were captured with Playwright driving Chrome at a 390×844 phone viewport (screenshot at 3× device pixel ratio, video at 2× via the DevTools screencast) against the dev server.
+
 ## Tech stack
 
 | Layer | Technology | Version | Purpose |
