@@ -10,7 +10,7 @@ The UI is in Spanish (Guatemala, `es-GT`); the code and docs are in English.
 | :---: | :---: |
 | <img src="assets/screenshot-landing.png" alt="PawsMatch landing screen: Luna's card with photo, bio, and Pasar / Adoptar buttons" width="300"> | <img src="assets/pawsmatch-demo.gif" alt="Demo: swiping cards, passing and adopting, the adoption screen and scheduling a visit" width="300"> |
 
-▶ **Full-quality video:** [assets/pawsmatch-demo.mp4](assets/pawsmatch-demo.mp4) (H.264, 780×1688, 30 fps, 31 s). The animated GIF above is the same recording, downscaled, because GitHub doesn't play videos stored in the repository inline.
+▶ **Full-quality video:** [assets/pawsmatch-demo.mp4](assets/pawsmatch-demo.mp4) (H.264, 780×1688, 30 fps, 28 s). The animated GIF above is the same recording, downscaled, because GitHub doesn't play videos stored in the repository inline.
 
 **What the demo shows, in order:**
 
